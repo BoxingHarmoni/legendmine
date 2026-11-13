@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LegendMine — Легендарный Minecraft Сервер</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- Particles background -->
+<div id="particles"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="LegendMine" class="logo-img"/>
+      <span class="logo-text">Legend<span class="gold">Mine</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Главная</a></li>
+      <li><a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Профиль</a></li>
+      <li><a href="donate.html" class="nav-link"><i class="fas fa-gem"></i> Донат</a></li>
+      <li><a href="index.html#stats" class="nav-link"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+      <li><a href="index.html#news" class="nav-link"><i class="fas fa-newspaper"></i> Новости</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="online-badge">
+        <span class="online-dot"></span>
+        <span id="online-count">247</span> онлайн
+      </div>
+      <a href="profile.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Войти</a>
+    </div>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="server-badge"><i class="fas fa-server"></i> 1.8 — 1.21 | Java & Bedrock</div>
+    <h1 class="hero-title">
+      <span class="hero-legend">Legend</span><span class="hero-mine">Mine</span>
+    </h1>
+    <p class="hero-sub">Лучший выживальный сервер с уникальным геймплеем, экономикой и кланами</p>
+    <div class="hero-ip-box">
+      <span class="ip-label">IP адрес:</span>
+      <span class="ip-value" id="server-ip">legendmine.ru</span>
+      <button class="copy-btn" onclick="copyIP()"><i class="fas fa-copy"></i> Копировать</button>
+    </div>
+    <div class="hero-buttons">
+      <a href="donate.html" class="btn-primary"><i class="fas fa-gem"></i> Магазин</a>
+      <a href="profile.html" class="btn-secondary"><i class="fas fa-user-circle"></i> Профиль</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hs-num" data-target="247">0</span>
+        <span class="hs-label">Онлайн</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hs-num" data-target="18420">0</span>
+        <span class="hs-label">Игроков</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hs-num" data-target="99">0</span>
+        <span class="hs-label">Аптайм %</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hs-num" data-target="3">0</span>
+        <span class="hs-label">Сервера</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-float">
+    <img src="logo.jpg" alt="LegendMine Logo" class="hero-logo-float"/>
+  </div>
+  <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- SERVERS -->
+<section class="servers-section" id="servers">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Игра</span>
+      <h2>Выбери свой сервер</h2>
+      <p>Каждый режим — уникальный мир с своими правилами</p>
+    </div>
+    <div class="servers-grid">
+      <div class="server-card active-server">
+        <div class="server-icon"><i class="fas fa-mountain"></i></div>
+        <div class="server-card-badge">ХИТ</div>
+        <h3>Выживание</h3>
+        <p>Классическое выживание с экономикой, кланами и войнами за территорию</p>
+        <div class="server-info">
+          <span><i class="fas fa-users"></i> 142 онлайн</span>
+          <span><i class="fas fa-signal"></i> 12ms</span>
+        </div>
+        <div class="server-version">1.8 — 1.21</div>
+      </div>
+      <div class="server-card">
+        <div class="server-icon"><i class="fas fa-bomb"></i></div>
+        <h3>SkyWars</h3>
+        <p>Битвы на островах в небе. Собирай ресурсы и уничтожай соперников!</p>
+        <div class="server-info">
+          <span><i class="fas fa-users"></i> 68 онлайн</span>
+          <span><i class="fas fa-signal"></i> 8ms</span>
+        </div>
+        <div class="server-version">1.8 — 1.21</div>
+      </div>
+      <div class="server-card">
+        <div class="server-icon"><i class="fas fa-sword"></i></div>
+        <h3>PvP Arena</h3>
+        <p>Сражения 1v1 и турниры. Докажи что ты лучший боец на сервере</p>
+        <div class="server-info">
+          <span><i class="fas fa-users"></i> 37 онлайн</span>
+          <span><i class="fas fa-signal"></i> 10ms</span>
+        </div>
+        <div class="server-version">1.8 — 1.21</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section" id="stats">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Рейтинг</span>
+      <h2>Лидеры сервера</h2>
+    </div>
+    <div class="stats-tabs">
+      <button class="tab-btn active" data-tab="richest">💰 Богатейшие</button>
+      <button class="tab-btn" data-tab="pvp">⚔️ Лучшие PvP</button>
+      <button class="tab-btn" data-tab="playtime">⏱️ По времени</button>
+    </div>
+    <div class="leaderboard" id="tab-richest">
+      <div class="leader-row gold-row">
+        <span class="rank">🥇</span>
+        <img src="https://mc-heads.net/avatar/Steve/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">DiamondKing_</span>
+        <span class="leader-val">$2,450,000</span>
+        <span class="leader-badge vip-badge">VIP+</span>
+      </div>
+      <div class="leader-row silver-row">
+        <span class="rank">🥈</span>
+        <img src="https://mc-heads.net/avatar/Alex/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">xXSlayerXx</span>
+        <span class="leader-val">$1,890,000</span>
+        <span class="leader-badge premium-badge">Premium</span>
+      </div>
+      <div class="leader-row bronze-row">
+        <span class="rank">🥉</span>
+        <img src="https://mc-heads.net/avatar/Notch/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">CraftMaster99</span>
+        <span class="leader-val">$1,230,000</span>
+        <span class="leader-badge">Игрок</span>
+      </div>
+      <div class="leader-row">
+        <span class="rank">4</span>
+        <img src="https://mc-heads.net/avatar/Herobrine/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">NightWalker</span>
+        <span class="leader-val">$987,500</span>
+        <span class="leader-badge vip-badge">VIP</span>
+      </div>
+      <div class="leader-row">
+        <span class="rank">5</span>
+        <img src="https://mc-heads.net/avatar/jeb_/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">ProBuilder2000</span>
+        <span class="leader-val">$754,200</span>
+        <span class="leader-badge">Игрок</span>
+      </div>
+    </div>
+    <div class="leaderboard hidden" id="tab-pvp">
+      <div class="leader-row gold-row">
+        <span class="rank">🥇</span>
+        <img src="https://mc-heads.net/avatar/xXSlayerXx/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">xXSlayerXx</span>
+        <span class="leader-val">4,820 убийств</span>
+        <span class="leader-badge premium-badge">Premium</span>
+      </div>
+      <div class="leader-row silver-row">
+        <span class="rank">🥈</span>
+        <img src="https://mc-heads.net/avatar/Steve/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">BloodRaven</span>
+        <span class="leader-val">3,210 убийств</span>
+        <span class="leader-badge vip-badge">VIP+</span>
+      </div>
+      <div class="leader-row bronze-row">
+        <span class="rank">🥉</span>
+        <img src="https://mc-heads.net/avatar/Notch/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">ShadowBlade_</span>
+        <span class="leader-val">2,780 убийств</span>
+        <span class="leader-badge">Игрок</span>
+      </div>
+    </div>
+    <div class="leaderboard hidden" id="tab-playtime">
+      <div class="leader-row gold-row">
+        <span class="rank">🥇</span>
+        <img src="https://mc-heads.net/avatar/Herobrine/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">CraftMaster99</span>
+        <span class="leader-val">1,240 часов</span>
+        <span class="leader-badge vip-badge">VIP</span>
+      </div>
+      <div class="leader-row silver-row">
+        <span class="rank">🥈</span>
+        <img src="https://mc-heads.net/avatar/Alex/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">DiamondKing_</span>
+        <span class="leader-val">980 часов</span>
+        <span class="leader-badge premium-badge">Premium</span>
+      </div>
+      <div class="leader-row bronze-row">
+        <span class="rank">🥉</span>
+        <img src="https://mc-heads.net/avatar/Steve/32" class="leader-avatar" alt="player"/>
+        <span class="leader-name">NightWalker</span>
+        <span class="leader-val">820 часов</span>
+        <span class="leader-badge">Игрок</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news-section" id="news">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Новости</span>
+      <h2>Последние обновления</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card featured">
+        <div class="news-tag update">Обновление</div>
+        <div class="news-date"><i class="fas fa-calendar"></i> 28 Октября 2026</div>
+        <h3>Глобальное обновление 3.0 — Новый мир!</h3>
+        <p>Мы полностью обновили мир выживания! Новые биомы, структуры, боссы и уникальные ресурсы ждут вас. Присоединяйтесь и исследуйте!</p>
+        <a href="#" class="news-read">Читать далее <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="news-card">
+        <div class="news-tag event">Ивент</div>
+        <div class="news-date"><i class="fas fa-calendar"></i> 25 Октября 2026</div>
+        <h3>Хэллоуин ивент 2026!</h3>
+        <p>Пугающие мобы, тыквенные фермы и эксклюзивные скины. Получи редкие предметы!</p>
+        <a href="#" class="news-read">Читать далее <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="news-card">
+        <div class="news-tag donate">Донат</div>
+        <div class="news-date"><i class="fas fa-calendar"></i> 20 Октября 2026</div>
+        <h3>Новые привилегии в магазине</h3>
+        <p>Добавлены уникальные эффекты, питомцы и новый ранг «Легенда». Скидка 30% на все ранги!</p>
+        <a href="#" class="news-read">Читать далее <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT DONATORS -->
+<section class="donators-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Поддержка</span>
+      <h2>Последние донатеры</h2>
+    </div>
+    <div class="donators-ticker">
+      <div class="ticker-inner" id="ticker">
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Steve/24" alt=""/><span>DiamondKing_</span><span class="d-amount">+500₽</span><span class="d-rank">VIP+</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Alex/24" alt=""/><span>xXSlayerXx</span><span class="d-amount">+250₽</span><span class="d-rank">VIP</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Notch/24" alt=""/><span>NightWalker</span><span class="d-amount">+1000₽</span><span class="d-rank">Premium</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Herobrine/24" alt=""/><span>ProBuilder2000</span><span class="d-amount">+150₽</span><span class="d-rank">VIP</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/jeb_/24" alt=""/><span>CraftMaster99</span><span class="d-amount">+2000₽</span><span class="d-rank">Legend</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Steve/24" alt=""/><span>ShadowBlade_</span><span class="d-amount">+300₽</span><span class="d-rank">VIP</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Alex/24" alt=""/><span>BloodRaven</span><span class="d-amount">+750₽</span><span class="d-rank">Premium</span></div>
+        <!-- duplicate for infinite scroll -->
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Steve/24" alt=""/><span>DiamondKing_</span><span class="d-amount">+500₽</span><span class="d-rank">VIP+</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Alex/24" alt=""/><span>xXSlayerXx</span><span class="d-amount">+250₽</span><span class="d-rank">VIP</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Notch/24" alt=""/><span>NightWalker</span><span class="d-amount">+1000₽</span><span class="d-rank">Premium</span></div>
+        <div class="donate-item"><img src="https://mc-heads.net/avatar/Herobrine/24" alt=""/><span>ProBuilder2000</span><span class="d-amount">+150₽</span><span class="d-rank">VIP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN SECTION -->
+<section class="join-section">
+  <div class="container">
+    <div class="join-box">
+      <div class="join-text">
+        <h2>Готов стать Легендой?</h2>
+        <p>Заходи прямо сейчас и начни своё приключение вместе с тысячами игроков!</p>
+        <div class="join-ip">
+          <span>legendmine.ru</span>
+          <button onclick="copyIP()"><i class="fas fa-copy"></i></button>
+        </div>
+      </div>
+      <div class="join-logo">
+        <img src="logo.jpg" alt="LegendMine"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="logo.jpg" alt="LegendMine" class="footer-logo-img"/>
+          <span>Legend<span class="gold">Mine</span></span>
+        </div>
+        <p class="footer-desc">Лучший Minecraft сервер с уникальным геймплеем и дружным сообществом.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4>
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="profile.html">Профиль</a></li>
+          <li><a href="donate.html">Донат</a></li>
+          <li><a href="index.html#stats">Статистика</a></li>
+          <li><a href="index.html#news">Новости</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Сервер</h4>
+        <ul>
+          <li><a href="#">Правила</a></li>
+          <li><a href="#">Жалобы</a></li>
+          <li><a href="#">Поддержка</a></li>
+          <li><a href="#">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Сервер онлайн</h4>
+        <div class="footer-server-status">
+          <div class="status-row">
+            <span class="status-dot online"></span>
+            <span>Выживание</span>
+            <span class="status-players">142/500</span>
+          </div>
+          <div class="status-row">
+            <span class="status-dot online"></span>
+            <span>SkyWars</span>
+            <span class="status-players">68/200</span>
+          </div>
+          <div class="status-row">
+            <span class="status-dot online"></span>
+            <span>PvP Arena</span>
+            <span class="status-players">37/100</span>
+          </div>
+        </div>
+        <div class="footer-ip">
+          <i class="fas fa-server"></i> legendmine.ru
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LegendMine. Все права защищены. Не связан с Mojang Studios.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check"></i> IP скопирован!</div>
+
+<script src="script.js"></script>
+</body>
+</html>

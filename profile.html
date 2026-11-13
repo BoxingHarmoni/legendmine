@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Профиль — LegendMine</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div id="particles"></div>
+
+<!-- ══════════════ LOGIN OVERLAY ══════════════ -->
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-box">
+    <img src="logo.jpg" alt="LegendMine" class="auth-logo"/>
+    <h2 class="auth-title">Legend<span class="gold">Mine</span></h2>
+    <p class="auth-sub">Войди в аккаунт чтобы увидеть профиль</p>
+    <div class="auth-form" id="auth-login-form">
+      <div class="auth-input-wrap">
+        <i class="fas fa-user"></i>
+        <input type="text" id="auth-nick" placeholder="Ник на сервере" autocomplete="username"/>
+      </div>
+      <div class="auth-input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="auth-pass" placeholder="Пароль" autocomplete="current-password"/>
+        <button class="auth-eye" onclick="togglePass('auth-pass',this)" tabindex="-1"><i class="fas fa-eye"></i></button>
+      </div>
+      <div class="auth-error" id="auth-error"></div>
+      <button class="btn-primary auth-submit" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Войти</button>
+      <button class="auth-switch" onclick="switchToRegister()">Нет аккаунта? <span>Зарегистрироваться</span></button>
+    </div>
+    <div class="auth-form hidden" id="auth-register-form">
+      <div class="auth-input-wrap">
+        <i class="fas fa-user"></i>
+        <input type="text" id="reg-nick" placeholder="Ник на сервере"/>
+      </div>
+      <div class="auth-input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="reg-pass" placeholder="Пароль"/>
+      </div>
+      <div class="auth-input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="reg-pass2" placeholder="Повторите пароль"/>
+      </div>
+      <div class="auth-error" id="reg-error"></div>
+      <button class="btn-primary auth-submit" onclick="doRegister()"><i class="fas fa-user-plus"></i> Создать аккаунт</button>
+      <button class="auth-switch" onclick="switchToLogin()">Уже есть аккаунт? <span>Войти</span></button>
+    </div>
+    <div class="auth-demo" id="auth-demo-box">
+      <div class="auth-demo-title"><i class="fas fa-vial"></i> Временные демо-аккаунты для теста:</div>
+      <div class="auth-demo-btns">
+        <button type="button" onclick="fillDemo('BoxingHarmony','harmony123')"><i class="fas fa-user"></i> BoxingHarmony (Игрок)</button>
+        <button type="button" onclick="fillDemo('DiamondKing_','king456')"><i class="fas fa-crown"></i> DiamondKing_ (Админ)</button>
+        <button type="button" onclick="fillDemo('xXSlayerXx','slayer789')"><i class="fas fa-shield-alt"></i> xXSlayerXx (VIP)</button>
+      </div>
+      <small class="auth-demo-note">Отключаются в файле profile.js (параметр ENABLE_DEMO_ACCOUNTS)</small>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="LegendMine" class="logo-img"/>
+      <span class="logo-text">Legend<span class="gold">Mine</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a></li>
+      <li><a href="profile.html" class="nav-link active"><i class="fas fa-user"></i> Профиль</a></li>
+      <li><a href="donate.html" class="nav-link"><i class="fas fa-gem"></i> Донат</a></li>
+      <li><a href="index.html#stats" class="nav-link"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="online-badge">
+        <span class="online-dot"></span>
+        <span id="online-count">247</span> онлайн
+      </div>
+      <div class="nav-user-info" id="nav-user-info" style="display:none">
+        <img id="nav-avatar" src="" alt="" class="nav-avatar-img"/>
+        <span id="nav-username"></span>
+        <button class="btn-logout" onclick="doLogout()" title="Выйти"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
+      <a href="profile.html" class="btn-login" id="nav-login-btn"><i class="fas fa-sign-in-alt"></i> Войти</a>
+    </div>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ══════════════ PAGE HEADER ══════════════ -->
+<div class="page-header" id="page-header" style="display:none">
+  <div class="container">
+    <h1><i class="fas fa-user-circle"></i> Профиль игрока</h1>
+    <p id="page-header-sub">Добро пожаловать!</p>
+  </div>
+</div>
+
+<!-- ══════════════ PROFILE SECTION ══════════════ -->
+<section class="profile-section" id="profile-section" style="display:none">
+  <div class="container">
+    <div class="profile-wrapper">
+
+      <!-- LEFT PANEL -->
+      <div class="profile-left">
+        <div class="profile-avatar-wrap">
+          <div class="profile-rank-glow" id="rank-glow"></div>
+          <img src="" alt="skin" class="profile-skin" id="profile-skin"/>
+          <div class="profile-status online-status"><span class="online-dot"></span> Онлайн</div>
+        </div>
+        <div class="profile-name-box">
+          <h2 class="profile-name" id="profile-name">—</h2>
+          <div class="profile-rank" id="profile-rank">Игрок</div>
+        </div>
+        <div class="profile-quick-stats">
+          <div class="pqs-item"><i class="fas fa-clock"></i><span id="pqs-time">—</span><small>Время игры</small></div>
+          <div class="pqs-item"><i class="fas fa-calendar-alt"></i><span id="pqs-reg">—</span><small>Регистрация</small></div>
+          <div class="pqs-item"><i class="fas fa-eye"></i><span id="pqs-last">—</span><small>Последний вход</small></div>
+        </div>
+        <div class="profile-balance-card">
+          <div class="balance-icon"><i class="fas fa-coins"></i></div>
+          <div class="balance-info"><small>Баланс</small><span class="balance-amount" id="balance-val">$0</span></div>
+        </div>
+        <div class="profile-donate-balance">
+          <div class="balance-icon donate-icon"><i class="fas fa-gem"></i></div>
+          <div class="balance-info"><small>Донат-баланс</small><span class="balance-amount gold" id="donate-bal-val">0 ₽</span></div>
+        </div>
+        <button class="btn-logout-full" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Выйти из аккаунта</button>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="profile-right">
+        <div class="profile-tabs" id="profile-tabs">
+          <button class="ptab active" data-ptab="stats"><i class="fas fa-chart-bar"></i> Статистика</button>
+          <button class="ptab" data-ptab="inventory"><i class="fas fa-backpack"></i> Инвентарь</button>
+          <button class="ptab" data-ptab="resources"><i class="fas fa-cubes"></i> Ресурсы</button>
+          <button class="ptab" data-ptab="achievements"><i class="fas fa-trophy"></i> Достижения</button>
+          <button class="ptab" data-ptab="history"><i class="fas fa-history"></i> История</button>
+          <button class="ptab ptab-admin" data-ptab="console" id="console-tab-btn" style="display:none">
+            <i class="fas fa-terminal"></i> Консоль
+          </button>
+        </div>
+
+        <!-- ── STATS TAB ── -->
+        <div class="ptab-content active" id="ptab-stats">
+          <div class="stats-grid-profile">
+            <div class="stat-card-p"><div class="stat-icon kills"><i class="fas fa-skull"></i></div><div class="stat-val" id="stat-kills">0</div><div class="stat-name">Убийств</div></div>
+            <div class="stat-card-p"><div class="stat-icon deaths"><i class="fas fa-cross"></i></div><div class="stat-val" id="stat-deaths">0</div><div class="stat-name">Смертей</div></div>
+            <div class="stat-card-p"><div class="stat-icon kd"><i class="fas fa-percentage"></i></div><div class="stat-val" id="stat-kd">0</div><div class="stat-name">K/D</div></div>
+            <div class="stat-card-p"><div class="stat-icon blocks"><i class="fas fa-cube"></i></div><div class="stat-val" id="stat-blocks">0</div><div class="stat-name">Блоков</div></div>
+            <div class="stat-card-p"><div class="stat-icon mobs"><i class="fas fa-dragon"></i></div><div class="stat-val" id="stat-mobs">0</div><div class="stat-name">Мобов убито</div></div>
+            <div class="stat-card-p"><div class="stat-icon level"><i class="fas fa-star"></i></div><div class="stat-val" id="stat-level">1</div><div class="stat-name">Уровень</div></div>
+          </div>
+          <div class="xp-section">
+            <div class="xp-label"><span id="xp-label-l">Lv.1</span><span id="xp-label-r">0 / 1000 XP</span></div>
+            <div class="xp-bar"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
+          </div>
+          <div class="clan-box">
+            <div class="clan-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="clan-info">
+              <small>Клан</small>
+              <span class="clan-name" id="stat-clan">Нет клана</span>
+              <small class="clan-role" id="stat-clan-role"></small>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── INVENTORY TAB ── -->
+        <div class="ptab-content" id="ptab-inventory">
+          <div class="mc-inventory-wrap">
+            <!-- Equipment row -->
+            <div class="mc-section-label"><i class="fas fa-shield-alt"></i> Снаряжение</div>
+            <div class="mc-equipment-row" id="mc-equipment"></div>
+
+            <!-- Main inventory -->
+            <div class="mc-section-label" style="margin-top:18px"><i class="fas fa-th"></i> Инвентарь (27 ячеек)</div>
+            <div class="mc-inv-grid" id="mc-inv-grid"></div>
+
+            <!-- Hotbar -->
+            <div class="mc-hotbar-wrap">
+              <div class="mc-hotbar-label"><i class="fas fa-bolt"></i> Панель быстрого доступа</div>
+              <div class="mc-hotbar" id="mc-hotbar"></div>
+            </div>
+          </div>
+          <!-- Tooltip (global) -->
+          <div class="mc-tooltip" id="mc-tooltip">
+            <div class="mc-tooltip-name" id="tt-name"></div>
+            <div class="mc-tooltip-enchants" id="tt-enchants"></div>
+            <div class="mc-tooltip-meta" id="tt-meta"></div>
+          </div>
+        </div>
+
+        <!-- ── RESOURCES TAB ── -->
+        <div class="ptab-content" id="ptab-resources">
+          <div class="resources-title">Склад игрока</div>
+          <div class="resources-grid" id="resources-grid"></div>
+        </div>
+
+        <!-- ── ACHIEVEMENTS TAB ── -->
+        <div class="ptab-content" id="ptab-achievements">
+          <div class="achiev-grid" id="achiev-grid"></div>
+        </div>
+
+        <!-- ── HISTORY TAB ── -->
+        <div class="ptab-content" id="ptab-history">
+          <div class="history-list" id="history-list"></div>
+        </div>
+
+        <!-- ── CONSOLE TAB (ADMIN) ── -->
+        <div class="ptab-content" id="ptab-console">
+          <!-- Password gate -->
+          <div class="console-gate" id="console-gate">
+            <div class="console-gate-icon"><i class="fas fa-terminal"></i></div>
+            <h3>Административная консоль</h3>
+            <p>Доступ только для администраторов сервера LegendMine</p>
+            <div class="auth-input-wrap" style="max-width:320px;margin:0 auto 16px">
+              <i class="fas fa-key"></i>
+              <input type="password" id="admin-pass-input" placeholder="Пароль администратора" onkeydown="if(event.key==='Enter')checkAdminPass()"/>
+            </div>
+            <div class="auth-error" id="admin-pass-error"></div>
+            <button class="btn-primary" onclick="checkAdminPass()"><i class="fas fa-unlock"></i> Войти в консоль</button>
+          </div>
+
+          <!-- Console UI (hidden until authed) -->
+          <div class="console-ui hidden" id="console-ui">
+            <div class="console-header">
+              <div class="console-header-left">
+                <span class="console-status"><span class="online-dot"></span> LegendMine Console v2.0</span>
+                <span class="console-admin-badge"><i class="fas fa-crown"></i> Администратор</span>
+              </div>
+              <div class="console-header-right">
+                <button class="console-btn" onclick="consoleLogout()"><i class="fas fa-lock"></i> Заблокировать</button>
+              </div>
+            </div>
+
+            <div class="console-body">
+              <!-- Left: player list -->
+              <div class="console-sidebar">
+                <div class="console-search-wrap">
+                  <i class="fas fa-search"></i>
+                  <input type="text" id="console-player-search" placeholder="Поиск игрока..." oninput="filterConsolePlayers()"/>
+                </div>
+                <div class="console-players-list" id="console-players-list"></div>
+              </div>
+
+              <!-- Right: player detail / terminal -->
+              <div class="console-main">
+                <div class="console-tabs">
+                  <button class="ctab active" data-ctab="player-view"><i class="fas fa-user"></i> Профиль игрока</button>
+                  <button class="ctab" data-ctab="terminal"><i class="fas fa-terminal"></i> Терминал</button>
+                  <button class="ctab" data-ctab="server-info"><i class="fas fa-server"></i> Сервер</button>
+                </div>
+
+                <!-- Player view -->
+                <div class="ctab-content active" id="ctab-player-view">
+                  <div class="console-no-player" id="console-no-player">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Выберите игрока из списка слева</p>
+                  </div>
+                  <div class="console-player-detail hidden" id="console-player-detail">
+                    <div class="cpd-header">
+                      <img id="cpd-skin" src="" alt="" class="cpd-skin"/>
+                      <div class="cpd-info">
+                        <div class="cpd-name" id="cpd-name"></div>
+                        <div class="cpd-rank" id="cpd-rank"></div>
+                        <div class="cpd-status" id="cpd-status"></div>
+                      </div>
+                      <div class="cpd-actions">
+                        <button class="cpd-action-btn kick" onclick="adminAction('kick')"><i class="fas fa-door-open"></i> Кик</button>
+                        <button class="cpd-action-btn ban" onclick="adminAction('ban')"><i class="fas fa-ban"></i> Бан</button>
+                        <button class="cpd-action-btn mute" onclick="adminAction('mute')"><i class="fas fa-volume-mute"></i> Мут</button>
+                        <button class="cpd-action-btn tp" onclick="adminAction('tp')"><i class="fas fa-location-arrow"></i> TP</button>
+                      </div>
+                    </div>
+                    <div class="cpd-stats-row">
+                      <div class="cpd-stat"><span id="cpd-kills">0</span><small>Убийств</small></div>
+                      <div class="cpd-stat"><span id="cpd-deaths">0</span><small>Смертей</small></div>
+                      <div class="cpd-stat"><span id="cpd-balance">$0</span><small>Баланс</small></div>
+                      <div class="cpd-stat"><span id="cpd-time">0ч</span><small>Время</small></div>
+                      <div class="cpd-stat"><span id="cpd-ip">—</span><small>IP</small></div>
+                    </div>
+
+                    <!-- Mini inventory in console -->
+                    <div class="cpd-inv-label"><i class="fas fa-backpack"></i> Инвентарь игрока</div>
+                    <div class="cpd-equipment" id="cpd-equipment"></div>
+                    <div class="cpd-inv" id="cpd-inv"></div>
+                    <div class="mc-tooltip" id="mc-tooltip-cpd">
+                      <div class="mc-tooltip-name" id="cpd-tt-name"></div>
+                      <div class="mc-tooltip-enchants" id="cpd-tt-enchants"></div>
+                      <div class="mc-tooltip-meta" id="cpd-tt-meta"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Terminal -->
+                <div class="ctab-content" id="ctab-terminal">
+                  <div class="terminal-output" id="terminal-output">
+                    <div class="term-line"><span class="term-time">[11:49:42]</span> <span class="term-info">LegendMine сервер запущен</span></div>
+                    <div class="term-line"><span class="term-time">[11:49:43]</span> <span class="term-ok">Загружено плагинов: 24</span></div>
+                    <div class="term-line"><span class="term-time">[11:49:44]</span> <span class="term-ok">Мир загружен: world, world_nether, world_the_end</span></div>
+                    <div class="term-line"><span class="term-time">[11:50:00]</span> <span class="term-info">BoxingHarmony зашёл на сервер</span></div>
+                    <div class="term-line"><span class="term-time">[11:52:14]</span> <span class="term-info">DiamondKing_ зашёл на сервер</span></div>
+                    <div class="term-line"><span class="term-time">[11:53:01]</span> <span class="term-warn">xXSlayerXx: ругательство заблокировано</span></div>
+                  </div>
+                  <div class="terminal-input-row">
+                    <span class="term-prompt">admin@legendmine $</span>
+                    <input type="text" id="terminal-input" class="terminal-input" placeholder="Введите команду..." onkeydown="handleTerminal(event)"/>
+                  </div>
+                </div>
+
+                <!-- Server info -->
+                <div class="ctab-content" id="ctab-server-info">
+                  <div class="server-info-grid">
+                    <div class="si-card"><i class="fas fa-users"></i><span id="si-online">247</span><small>Онлайн</small></div>
+                    <div class="si-card"><i class="fas fa-server"></i><span>3</span><small>Серверов</small></div>
+                    <div class="si-card"><i class="fas fa-memory"></i><span>4.2 GB</span><small>RAM</small></div>
+                    <div class="si-card"><i class="fas fa-microchip"></i><span>12%</span><small>CPU</small></div>
+                    <div class="si-card"><i class="fas fa-clock"></i><span id="si-uptime">14д 6ч</span><small>Аптайм</small></div>
+                    <div class="si-card"><i class="fas fa-tachometer-alt"></i><span>19.8 TPS</span><small>TPS</small></div>
+                    <div class="si-card"><i class="fas fa-hdd"></i><span>128 GB</span><small>Диск</small></div>
+                    <div class="si-card"><i class="fas fa-database"></i><span>18,420</span><small>Игроков всего</small></div>
+                  </div>
+                  <div class="si-version"><i class="fas fa-cube"></i> Minecraft 1.21.4 · PaperMC · Java 21</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /profile-right -->
+    </div><!-- /profile-wrapper -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom"><p>© 2026 LegendMine. Все права защищены.</p></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><i class="fas fa-check"></i> Готово!</div>
+<script src="script.js"></script>
+<script src="profile.js"></script>
+</body>
+</html>

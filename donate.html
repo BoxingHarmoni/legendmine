@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Донат — LegendMine</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<div id="particles"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.jpg" alt="LegendMine" class="logo-img"/>
+      <span class="logo-text">Legend<span class="gold">Mine</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a></li>
+      <li><a href="profile.html" class="nav-link"><i class="fas fa-user"></i> Профиль</a></li>
+      <li><a href="donate.html" class="nav-link active"><i class="fas fa-gem"></i> Донат</a></li>
+      <li><a href="index.html#stats" class="nav-link"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+      <li><a href="index.html#news" class="nav-link"><i class="fas fa-newspaper"></i> Новости</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="online-badge">
+        <span class="online-dot"></span>
+        <span id="online-count">247</span> онлайн
+      </div>
+      <a href="profile.html" class="btn-login"><i class="fas fa-sign-in-alt"></i> Войти</a>
+    </div>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header donate-header">
+  <div class="container">
+    <h1><i class="fas fa-gem"></i> Магазин привилегий</h1>
+    <p>Поддержи сервер и получи уникальные возможности!</p>
+  </div>
+</div>
+
+<section class="donate-section">
+  <div class="container">
+
+    <!-- BALANCE CARD -->
+    <div class="donate-balance-area">
+      <div class="d-balance-card">
+        <div class="d-bal-left">
+          <img src="https://mc-heads.net/avatar/DiamondKing_/48" alt="player" class="d-bal-avatar"/>
+          <div>
+            <div class="d-bal-nick">DiamondKing_</div>
+            <div class="d-bal-rank vip-plus-badge">⭐ VIP+</div>
+          </div>
+        </div>
+        <div class="d-bal-right">
+          <div class="d-bal-amount">
+            <i class="fas fa-gem gold"></i>
+            <span class="gold">1,250 ₽</span>
+          </div>
+          <small>Донат-баланс</small>
+          <button class="btn-primary small-btn" onclick="showTopup()"><i class="fas fa-plus"></i> Пополнить</button>
+        </div>
+      </div>
+      <div class="sale-banner">
+        <i class="fas fa-fire"></i>
+        <span>🎃 Хэллоуин скидка <strong>30%</strong> на все ранги! Осталось: <span id="sale-timer" class="gold">02:14:38</span></span>
+      </div>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <div class="donate-cats">
+      <button class="dcat active" data-cat="ranks"><i class="fas fa-crown"></i> Ранги</button>
+      <button class="dcat" data-cat="boosters"><i class="fas fa-bolt"></i> Бустеры</button>
+      <button class="dcat" data-cat="items"><i class="fas fa-box"></i> Предметы</button>
+      <button class="dcat" data-cat="cosmetics"><i class="fas fa-hat-wizard"></i> Косметика</button>
+      <button class="dcat" data-cat="currency"><i class="fas fa-coins"></i> Валюта</button>
+    </div>
+
+    <!-- RANKS -->
+    <div class="dcat-content active" id="dcat-ranks">
+      <div class="ranks-grid">
+
+        <div class="rank-card bronze-card">
+          <div class="rank-badge-top">Старт</div>
+          <div class="rank-icon">🥉</div>
+          <h3 class="rank-name">VIP</h3>
+          <div class="rank-price">
+            <span class="old-price">300 ₽</span>
+            <span class="cur-price">210 ₽</span>
+          </div>
+          <ul class="rank-perks">
+            <li><i class="fas fa-check"></i> Цветной ник в чате</li>
+            <li><i class="fas fa-check"></i> /nick команда</li>
+            <li><i class="fas fa-check"></i> Доступ к /fly в мирном мире</li>
+            <li><i class="fas fa-check"></i> +2 дома (итого 4)</li>
+            <li><i class="fas fa-check"></i> Значок [VIP] перед ником</li>
+            <li><i class="fas fa-check"></i> Ежедневный кит VIP</li>
+          </ul>
+          <button class="rank-buy-btn" onclick="buyRank('VIP', 210)">Купить VIP</button>
+        </div>
+
+        <div class="rank-card silver-card">
+          <div class="rank-badge-top popular">Популярно</div>
+          <div class="rank-icon">⭐</div>
+          <h3 class="rank-name">VIP+</h3>
+          <div class="rank-price">
+            <span class="old-price">700 ₽</span>
+            <span class="cur-price">490 ₽</span>
+          </div>
+          <ul class="rank-perks">
+            <li><i class="fas fa-check"></i> Всё из VIP</li>
+            <li><i class="fas fa-check"></i> /fly везде</li>
+            <li><i class="fas fa-check"></i> /god в мирном мире</li>
+            <li><i class="fas fa-check"></i> +4 дома (итого 6)</li>
+            <li><i class="fas fa-check"></i> Значок [VIP+] с анимацией</li>
+            <li><i class="fas fa-check"></i> Доступ к закрытому дискорду</li>
+            <li><i class="fas fa-check"></i> x2 к заработку валюты</li>
+          </ul>
+          <button class="rank-buy-btn silver-btn" onclick="buyRank('VIP+', 490)">Купить VIP+</button>
+        </div>
+
+        <div class="rank-card gold-card">
+          <div class="rank-badge-top best">Лучший выбор</div>
+          <div class="rank-icon">💎</div>
+          <h3 class="rank-name">Premium</h3>
+          <div class="rank-price">
+            <span class="old-price">1,500 ₽</span>
+            <span class="cur-price">1,050 ₽</span>
+          </div>
+          <ul class="rank-perks">
+            <li><i class="fas fa-check"></i> Всё из VIP+</li>
+            <li><i class="fas fa-check"></i> /god везде</li>
+            <li><i class="fas fa-check"></i> Свой чат-цвет</li>
+            <li><i class="fas fa-check"></i> +6 домов (итого 10)</li>
+            <li><i class="fas fa-check"></i> Частица эффектов вокруг игрока</li>
+            <li><i class="fas fa-check"></i> x3 к заработку валюты</li>
+            <li><i class="fas fa-check"></i> Уникальный скин плаща</li>
+            <li><i class="fas fa-check"></i> Приоритет в очереди</li>
+          </ul>
+          <button class="rank-buy-btn gold-btn" onclick="buyRank('Premium', 1050)">Купить Premium</button>
+        </div>
+
+        <div class="rank-card legend-card">
+          <div class="rank-badge-top legend-tag">Легенда</div>
+          <div class="rank-icon">👑</div>
+          <h3 class="rank-name">Legend</h3>
+          <div class="rank-price">
+            <span class="old-price">3,000 ₽</span>
+            <span class="cur-price">2,100 ₽</span>
+          </div>
+          <ul class="rank-perks">
+            <li><i class="fas fa-check"></i> Всё из Premium</li>
+            <li><i class="fas fa-check"></i> Собственное имя клана</li>
+            <li><i class="fas fa-check"></i> Уникальный эффект входа</li>
+            <li><i class="fas fa-check"></i> Неограниченные дома</li>
+            <li><i class="fas fa-check"></i> Доступ к /vanish</li>
+            <li><i class="fas fa-check"></i> x5 к заработку валюты</li>
+            <li><i class="fas fa-check"></i> Персональный питомец</li>
+            <li><i class="fas fa-check"></i> Уникальный значок в топе</li>
+            <li><i class="fas fa-check"></i> Участие в разработке сервера</li>
+          </ul>
+          <button class="rank-buy-btn legend-btn" onclick="buyRank('Legend', 2100)">Купить Legend</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOOSTERS -->
+    <div class="dcat-content" id="dcat-boosters">
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-emoji">⚡</div>
+          <h4>Бустер XP x2</h4>
+          <p>Двойной опыт на 24 часа</p>
+          <div class="item-price">75 ₽</div>
+          <button class="item-buy" onclick="buyItem('Бустер XP x2', 75)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">💰</div>
+          <h4>Бустер монет x2</h4>
+          <p>Двойная валюта на 24 часа</p>
+          <div class="item-price">100 ₽</div>
+          <button class="item-buy" onclick="buyItem('Бустер монет x2', 100)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">🔥</div>
+          <h4>Бустер x3 (сервер)</h4>
+          <p>Тройной бустер для всего сервера на 1 час</p>
+          <div class="item-price">500 ₽</div>
+          <button class="item-buy" onclick="buyItem('Бустер x3', 500)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">🌟</div>
+          <h4>Бустер дропа x2</h4>
+          <p>Двойной дроп с мобов на 48 часов</p>
+          <div class="item-price">150 ₽</div>
+          <button class="item-buy" onclick="buyItem('Бустер дропа x2', 150)">Купить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEMS -->
+    <div class="dcat-content" id="dcat-items">
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-emoji">⚔️</div>
+          <h4>Стартовый набор</h4>
+          <p>Железная броня + еда на начало игры</p>
+          <div class="item-price">50 ₽</div>
+          <button class="item-buy" onclick="buyItem('Стартовый набор', 50)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">💎</div>
+          <h4>Алмазный кит</h4>
+          <p>Полная алмазная броня + меч</p>
+          <div class="item-price">200 ₽</div>
+          <button class="item-buy" onclick="buyItem('Алмазный кит', 200)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">🗺️</div>
+          <h4>Карта сокровищ</h4>
+          <p>Случайное место с редкими ресурсами</p>
+          <div class="item-price">120 ₽</div>
+          <button class="item-buy" onclick="buyItem('Карта сокровищ', 120)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">🎁</div>
+          <h4>Лутбокс Легенда</h4>
+          <p>Случайный редкий предмет или ранг</p>
+          <div class="item-price">300 ₽</div>
+          <button class="item-buy" onclick="buyItem('Лутбокс Легенда', 300)">Купить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COSMETICS -->
+    <div class="dcat-content" id="dcat-cosmetics">
+      <div class="items-grid">
+        <div class="item-card">
+          <div class="item-emoji">🧥</div>
+          <h4>Плащ «Дракон»</h4>
+          <p>Уникальный анимированный плащ</p>
+          <div class="item-price">350 ₽</div>
+          <button class="item-buy" onclick="buyItem('Плащ Дракон', 350)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">✨</div>
+          <h4>Эффект «Пламя»</h4>
+          <p>Частицы огня вокруг игрока</p>
+          <div class="item-price">180 ₽</div>
+          <button class="item-buy" onclick="buyItem('Эффект Пламя', 180)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">🐺</div>
+          <h4>Питомец «Волк»</h4>
+          <p>Персональный декоративный питомец</p>
+          <div class="item-price">250 ₽</div>
+          <button class="item-buy" onclick="buyItem('Питомец Волк', 250)">Купить</button>
+        </div>
+        <div class="item-card">
+          <div class="item-emoji">🏷️</div>
+          <h4>Кастомный тег</h4>
+          <p>Свой тег перед ником в чате</p>
+          <div class="item-price">400 ₽</div>
+          <button class="item-buy" onclick="buyItem('Кастомный тег', 400)">Купить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRENCY -->
+    <div class="dcat-content" id="dcat-currency">
+      <div class="currency-grid">
+        <div class="cur-card">
+          <div class="cur-icon">🪙</div>
+          <div class="cur-amount">$10,000</div>
+          <div class="cur-label">игровых монет</div>
+          <div class="cur-price">50 ₽</div>
+          <button class="cur-buy" onclick="buyItem('$10,000 монет', 50)">Купить</button>
+        </div>
+        <div class="cur-card">
+          <div class="cur-icon">🪙</div>
+          <div class="cur-amount">$50,000</div>
+          <div class="cur-label">игровых монет</div>
+          <div class="cur-price">200 ₽</div>
+          <button class="cur-buy" onclick="buyItem('$50,000 монет', 200)">Купить</button>
+        </div>
+        <div class="cur-card popular-cur">
+          <div class="cur-badge">Выгодно!</div>
+          <div class="cur-icon">💰</div>
+          <div class="cur-amount">$200,000</div>
+          <div class="cur-label">игровых монет</div>
+          <div class="cur-price">650 ₽</div>
+          <button class="cur-buy gold-btn" onclick="buyItem('$200,000 монет', 650)">Купить</button>
+        </div>
+        <div class="cur-card">
+          <div class="cur-icon">💎</div>
+          <div class="cur-amount">$1,000,000</div>
+          <div class="cur-label">игровых монет</div>
+          <div class="cur-price">2,500 ₽</div>
+          <button class="cur-buy" onclick="buyItem('$1,000,000 монет', 2500)">Купить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECENT DONATORS TABLE -->
+    <div class="donate-history">
+      <h3><i class="fas fa-history"></i> Последние покупки</h3>
+      <div class="dh-table">
+        <div class="dh-row header">
+          <span>Игрок</span>
+          <span>Покупка</span>
+          <span>Сумма</span>
+          <span>Время</span>
+        </div>
+        <div class="dh-row">
+          <span class="dh-player"><img src="https://mc-heads.net/avatar/Steve/20" alt=""/>DiamondKing_</span>
+          <span class="dh-item">👑 Ранг Legend</span>
+          <span class="dh-sum gold">2,100 ₽</span>
+          <span class="dh-time">2 мин. назад</span>
+        </div>
+        <div class="dh-row">
+          <span class="dh-player"><img src="https://mc-heads.net/avatar/Alex/20" alt=""/>xXSlayerXx</span>
+          <span class="dh-item">⚡ Бустер XP x2</span>
+          <span class="dh-sum">75 ₽</span>
+          <span class="dh-time">8 мин. назад</span>
+        </div>
+        <div class="dh-row">
+          <span class="dh-player"><img src="https://mc-heads.net/avatar/Notch/20" alt=""/>NightWalker</span>
+          <span class="dh-item">⭐ Ранг VIP+</span>
+          <span class="dh-sum">490 ₽</span>
+          <span class="dh-time">23 мин. назад</span>
+        </div>
+        <div class="dh-row">
+          <span class="dh-player"><img src="https://mc-heads.net/avatar/Herobrine/20" alt=""/>ProBuilder</span>
+          <span class="dh-item">🧥 Плащ «Дракон»</span>
+          <span class="dh-sum">350 ₽</span>
+          <span class="dh-time">1 час назад</span>
+        </div>
+        <div class="dh-row">
+          <span class="dh-player"><img src="https://mc-heads.net/avatar/jeb_/20" alt=""/>CraftMaster99</span>
+          <span class="dh-item">💰 $200,000 монет</span>
+          <span class="dh-sum">650 ₽</span>
+          <span class="dh-time">2 часа назад</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUY MODAL -->
+<div class="modal-overlay" id="buy-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-icon"><i class="fas fa-gem"></i></div>
+    <h3 id="modal-title">Покупка VIP+</h3>
+    <div class="modal-price"><span id="modal-price">490 ₽</span></div>
+    <div class="modal-input-group">
+      <label>Ваш ник на сервере</label>
+      <input type="text" placeholder="Введите ник..." class="modal-input" id="modal-nick"/>
+    </div>
+    <div class="modal-pay-methods">
+      <button class="pay-btn active" onclick="selectPay(this)"><i class="fas fa-credit-card"></i> Карта</button>
+      <button class="pay-btn" onclick="selectPay(this)"><i class="fas fa-wallet"></i> ЮMoney</button>
+      <button class="pay-btn" onclick="selectPay(this)"><i class="fas fa-mobile-alt"></i> СБП</button>
+      <button class="pay-btn" onclick="selectPay(this)"><i class="fas fa-gem"></i> Баланс сайта</button>
+    </div>
+    <button class="btn-primary modal-buy-btn" onclick="confirmBuy()"><i class="fas fa-lock"></i> Оплатить</button>
+    <p class="modal-note">Привилегия будет выдана в течение 1-5 минут после оплаты</p>
+  </div>
+</div>
+
+<!-- TOPUP MODAL -->
+<div class="modal-overlay" id="topup-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeTopup()"><i class="fas fa-times"></i></button>
+    <div class="modal-icon gold"><i class="fas fa-coins"></i></div>
+    <h3>Пополнение баланса</h3>
+    <div class="topup-amounts">
+      <button class="topup-btn" onclick="setTopup(100)">100 ₽</button>
+      <button class="topup-btn" onclick="setTopup(250)">250 ₽</button>
+      <button class="topup-btn popular-topup" onclick="setTopup(500)">500 ₽ 🔥</button>
+      <button class="topup-btn" onclick="setTopup(1000)">1,000 ₽</button>
+      <button class="topup-btn" onclick="setTopup(2000)">2,000 ₽</button>
+    </div>
+    <div class="modal-input-group">
+      <label>Или введите сумму</label>
+      <input type="number" placeholder="Сумма в ₽" class="modal-input" id="topup-custom" min="50"/>
+    </div>
+    <button class="btn-primary modal-buy-btn" onclick="confirmTopup()"><i class="fas fa-plus-circle"></i> Пополнить</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 LegendMine. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><i class="fas fa-check"></i> Успешно!</div>
+<script src="script.js"></script>
+</body>
+</html>
