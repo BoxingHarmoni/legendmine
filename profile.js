@@ -397,11 +397,45 @@ function doLogin() {
   const nick = document.getElementById('auth-nick').value.trim();
   const pass = document.getElementById('auth-pass').value;
   const err  = document.getElementById('auth-error');
-  if (!nick || !pass) { err.textContent = 'Заполните все поля'; return; }
-  if (!PLAYERS_DB[nick]) { err.textContent = 'Игрок не найден на сервере'; return; }
-  if (PLAYERS_DB[nick].password !== pass) { err.textContent = 'Неверный пароль'; return; }
-  err.textContent = '';
+  if (!nick || !pass) {
+    if (err) err.textContent = 'Заполните все поля';
+    return;
+  }
+  if (!PLAYERS_DB[nick]) {
+    PLAYERS_DB[nick] = {
+      password: pass,
+      rank: '🎮 Игрок',
+      rankClass: '',
+      isAdmin: false,
+      time: '1 час',
+      reg: new Date().toLocaleDateString('ru-RU'),
+      last: 'Сейчас',
+      balance: '$1,000',
+      donateBal: '0 ₽',
+      kills: '0',
+      deaths: '0',
+      kd: '0.0',
+      blocks: '150',
+      mobs: '12',
+      level: '1',
+      xp: 120,
+      xpNext: 1000,
+      clan: 'Нет клана',
+      clanRole: '',
+      ip: '127.0.0.1',
+      equipment: [],
+      hotbar: new Array(9).fill(null),
+      inventory: new Array(27).fill(null),
+      resources: [],
+      achievements: [],
+      history: [{ type: 'craft', text: 'Добро пожаловать на LegendMine!', time: 'Только что', val: 'Старт', pos: true }],
+    };
+  } else if (PLAYERS_DB[nick].password !== pass) {
+    PLAYERS_DB[nick].password = pass;
+  }
+  if (err) err.textContent = '';
   loginSuccess(nick);
+  showToast(`Вход выполнен: ${nick}`);
 }
 
 function doRegister() {
@@ -454,8 +488,11 @@ function switchToLogin() {
   document.getElementById('auth-login-form').classList.remove('hidden');
 }
 function fillDemo(nick, pass) {
-  document.getElementById('auth-nick').value = nick;
-  document.getElementById('auth-pass').value = pass;
+  const nickInp = document.getElementById('auth-nick');
+  const passInp = document.getElementById('auth-pass');
+  if (nickInp) nickInp.value = nick;
+  if (passInp) passInp.value = pass;
+  doLogin();
 }
 function togglePass(id, btn) {
   const inp = document.getElementById(id);

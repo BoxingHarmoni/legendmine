@@ -3,11 +3,7 @@
    Dark Gold Theme | Minecraft Server
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
-  --font-pixel: 'Pixelify Sans', monospace;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --gold: #f0a500;
   --gold-light: #ffd700;
   --gold-dark: #c47f00;
@@ -34,55 +30,11 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-body);
+  font-family: 'Inter', sans-serif;
   background: var(--bg-dark);
   color: var(--text);
   overflow-x: hidden;
   min-height: 100vh;
-}
-
-h1, h2, h3, h4,
-.logo-text,
-.hero-title,
-.server-card h3,
-.server-card-badge,
-.server-version,
-.ip-value,
-.copy-btn,
-.btn-primary,
-.btn-secondary,
-.btn-login,
-.online-badge,
-.section-tag,
-.section-title h2,
-.tab-btn,
-.rank,
-.leader-val,
-.leader-badge,
-.news-tag,
-.news-card h3,
-.d-amount,
-.d-rank,
-.hs-num,
-.join-text h2,
-.join-ip span,
-.footer-logo span,
-.footer-col h4 {
-  font-family: var(--font-pixel);
-  letter-spacing: 0.5px;
-}
-
-.hero-sub {
-  font-family: var(--font-body);
-  font-size: 1.15rem;
-  color: var(--text-muted);
-}
-
-.hs-label {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 /* =====================================================
@@ -161,7 +113,7 @@ h1, h2, h3, h4,
   box-shadow: 0 0 15px rgba(240,165,0,0.4);
 }
 .logo-text {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--text);
@@ -254,7 +206,7 @@ h1, h2, h3, h4,
   border: none;
   cursor: pointer;
   transition: all 0.3s;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
   letter-spacing: 0.5px;
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(240,165,0,0.4); }
@@ -273,7 +225,7 @@ h1, h2, h3, h4,
   border: 2px solid var(--gold);
   cursor: pointer;
   transition: all 0.3s;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
 }
 .btn-secondary:hover { background: rgba(240,165,0,0.1); transform: translateY(-2px); }
 
@@ -344,7 +296,7 @@ h1, h2, h3, h4,
   text-transform: uppercase;
 }
 .hero-title {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 900;
   line-height: 1;
@@ -375,7 +327,7 @@ h1, h2, h3, h4,
 }
 .ip-label { color: var(--text-muted); font-size: 0.85rem; }
 .ip-value {
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--gold);
@@ -414,7 +366,7 @@ h1, h2, h3, h4,
   gap: 4px;
 }
 .hs-num {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--gold);
@@ -460,7 +412,7 @@ section { position: relative; z-index: 1; }
   margin-bottom: 12px;
 }
 .section-title h2 {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
   color: var(--text);
@@ -523,7 +475,7 @@ section { position: relative; z-index: 1; }
   letter-spacing: 1px;
 }
 .server-card h3 {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -598,7 +550,7 @@ section { position: relative; z-index: 1; }
 .rank { font-size: 1.2rem; min-width: 32px; }
 .leader-avatar { width: 36px; height: 36px; border-radius: 6px; border: 1px solid var(--border); }
 .leader-name { flex: 1; font-weight: 600; font-size: 0.95rem; }
-.leader-val { color: var(--gold); font-weight: 700; font-family: var(--font-pixel); font-size: 1rem; }
+.leader-val { color: var(--gold); font-weight: 700; font-family: 'Rajdhani', sans-serif; font-size: 1rem; }
 .leader-badge {
   padding: 3px 10px;
   border-radius: 12px;
@@ -655,7 +607,7 @@ section { position: relative; z-index: 1; }
 .news-tag.donate { background: rgba(240,165,0,0.15); color: var(--gold); }
 .news-date { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 12px; }
 .news-card h3 {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -730,7 +682,7 @@ section { position: relative; z-index: 1; }
   background: radial-gradient(ellipse at right, rgba(240,165,0,0.05), transparent 70%);
 }
 .join-text h2 {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 12px;
@@ -746,7 +698,7 @@ section { position: relative; z-index: 1; }
   padding: 12px 20px;
   display: inline-flex;
 }
-.join-ip span { font-family: var(--font-pixel); font-size: 1.3rem; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
+.join-ip span { font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
 .join-ip button { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; transition: color 0.2s; }
 .join-ip button:hover { color: var(--gold); }
 .join-logo img { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 2px solid rgba(240,165,0,0.3); box-shadow: 0 0 50px rgba(240,165,0,0.2); animation: float 6s ease-in-out infinite; }
@@ -771,7 +723,7 @@ section { position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 16px;
@@ -793,7 +745,7 @@ section { position: relative; z-index: 1; }
   font-size: 0.9rem;
 }
 .social-link:hover { background: rgba(240,165,0,0.1); border-color: rgba(240,165,0,0.4); color: var(--gold); }
-.footer-col h4 { font-family: var(--font-pixel); font-weight: 700; margin-bottom: 16px; color: var(--text); }
+.footer-col h4 { font-family: 'Cinzel', serif; font-weight: 700; margin-bottom: 16px; color: var(--text); }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 8px; }
 .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
@@ -842,7 +794,7 @@ section { position: relative; z-index: 1; }
   z-index: 1;
 }
 .page-header h1 {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -931,7 +883,7 @@ section { position: relative; z-index: 1; }
   text-align: center;
 }
 .profile-name {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -986,7 +938,7 @@ section { position: relative; z-index: 1; }
 .donate-icon { background: rgba(155,89,182,0.1); color: var(--purple); }
 .balance-info { display: flex; flex-direction: column; }
 .balance-info small { color: var(--text-muted); font-size: 0.75rem; margin-bottom: 3px; }
-.balance-amount { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+.balance-amount { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); }
 
 /* RIGHT */
 .profile-right {
@@ -1053,7 +1005,7 @@ section { position: relative; z-index: 1; }
 .stat-icon.blocks { background: rgba(52,73,94,0.3); color: #7f8c8d; }
 .stat-icon.mobs { background: rgba(46,204,113,0.1); color: var(--green); }
 .stat-icon.level { background: rgba(240,165,0,0.1); color: var(--gold); }
-.stat-val { font-family: var(--font-pixel); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.stat-val { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text); }
 .stat-name { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
 .xp-section { margin-bottom: 20px; }
 .xp-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: var(--text-muted); }
@@ -1075,7 +1027,7 @@ section { position: relative; z-index: 1; }
 .clan-role { color: var(--text-muted); font-size: 0.8rem; }
 
 /* Inventory tab */
-.inventory-label { font-weight: 700; font-family: var(--font-pixel); font-size: 0.9rem; margin-bottom: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.inventory-label { font-weight: 700; font-family: 'Cinzel', serif; font-size: 0.9rem; margin-bottom: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 .equipment-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1150,7 +1102,7 @@ section { position: relative; z-index: 1; }
 .hotbar-slot.active-slot { border-color: var(--gold); background: rgba(240,165,0,0.08); }
 
 /* Resources tab */
-.resources-title { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+.resources-title { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1166,7 +1118,7 @@ section { position: relative; z-index: 1; }
 .res-card:hover { transform: translateY(-2px); border-color: var(--border-hover); }
 .res-emoji { font-size: 1.5rem; margin-bottom: 8px; }
 .res-name { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
-.res-count { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.res-count { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
 .res-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
 .res-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
 .res-card.diamond .res-fill { background: #4dd9ff; }
@@ -1278,7 +1230,7 @@ section { position: relative; z-index: 1; }
 .d-bal-nick { font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
 .d-bal-rank { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; }
 .d-bal-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-.d-bal-amount { display: flex; align-items: center; gap: 8px; font-size: 1.6rem; font-weight: 700; font-family: var(--font-pixel); }
+.d-bal-amount { display: flex; align-items: center; gap: 8px; font-size: 1.6rem; font-weight: 700; font-family: 'Rajdhani', sans-serif; }
 .d-bal-right small { color: var(--text-muted); font-size: 0.8rem; }
 .sale-banner {
   display: flex;
@@ -1362,13 +1314,13 @@ section { position: relative; z-index: 1; }
 }
 .rank-icon { font-size: 2.5rem; }
 .rank-name {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.4rem;
   font-weight: 700;
 }
 .rank-price { display: flex; align-items: baseline; gap: 10px; }
 .old-price { color: var(--text-muted); font-size: 1rem; text-decoration: line-through; }
-.cur-price { color: var(--gold); font-family: var(--font-pixel); font-size: 1.8rem; font-weight: 700; }
+.cur-price { color: var(--gold); font-family: 'Rajdhani', sans-serif; font-size: 1.8rem; font-weight: 700; }
 .rank-perks { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .rank-perks li {
   display: flex;
@@ -1389,7 +1341,7 @@ section { position: relative; z-index: 1; }
   font-size: 0.9rem;
   font-weight: 700;
   transition: all 0.2s;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
   letter-spacing: 0.5px;
 }
 .rank-buy-btn:hover { background: rgba(255,255,255,0.1); }
@@ -1419,7 +1371,7 @@ section { position: relative; z-index: 1; }
 .item-emoji { font-size: 2.5rem; margin-bottom: 12px; }
 .item-card h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
 .item-card p { color: var(--text-muted); font-size: 0.82rem; line-height: 1.5; margin-bottom: 14px; }
-.item-price { color: var(--gold); font-family: var(--font-pixel); font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+.item-price { color: var(--gold); font-family: 'Rajdhani', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
 .item-buy {
   width: 100%;
   padding: 9px;
@@ -1431,7 +1383,7 @@ section { position: relative; z-index: 1; }
   font-size: 0.85rem;
   font-weight: 700;
   transition: all 0.2s;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
 }
 .item-buy:hover { background: rgba(240,165,0,0.15); }
 
@@ -1467,7 +1419,7 @@ section { position: relative; z-index: 1; }
   white-space: nowrap;
 }
 .cur-icon { font-size: 2rem; margin-bottom: 10px; }
-.cur-amount { font-family: var(--font-pixel); font-size: 1.4rem; font-weight: 700; color: var(--gold); }
+.cur-amount { font-family: 'Rajdhani', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); }
 .cur-label { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 12px; }
 .cur-price { color: var(--text); font-size: 1.1rem; font-weight: 600; margin-bottom: 14px; }
 .cur-buy {
@@ -1481,14 +1433,14 @@ section { position: relative; z-index: 1; }
   font-size: 0.85rem;
   font-weight: 700;
   transition: all 0.2s;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
 }
 .cur-buy:hover { background: rgba(255,255,255,0.1); color: var(--text); }
 .cur-buy.gold-btn { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: #000; border: none; }
 
 /* Donate History */
 .donate-history { margin-top: 20px; }
-.donate-history h3 { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.donate-history h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 .donate-history h3 i { color: var(--gold); }
 .dh-table { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .dh-row {
@@ -1566,9 +1518,9 @@ section { position: relative; z-index: 1; }
   margin: 0 auto 20px;
 }
 .modal-icon.gold { background: rgba(240,165,0,0.1); color: var(--gold); }
-.modal-box h3 { font-family: var(--font-pixel); font-size: 1.3rem; font-weight: 700; text-align: center; margin-bottom: 12px; }
+.modal-box h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; text-align: center; margin-bottom: 12px; }
 .modal-price { text-align: center; margin-bottom: 24px; }
-.modal-price span { font-family: var(--font-pixel); font-size: 2rem; font-weight: 700; color: var(--gold); }
+.modal-price span { font-family: 'Rajdhani', sans-serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
 .modal-input-group { margin-bottom: 20px; }
 .modal-input-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
 .modal-input {
@@ -1628,7 +1580,7 @@ section { position: relative; z-index: 1; }
   font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.2s;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
   white-space: nowrap;
 }
 .topup-btn:hover, .topup-btn.active { background: rgba(240,165,0,0.1); border-color: rgba(240,165,0,0.4); color: var(--gold); }
@@ -1763,7 +1715,7 @@ section { position: relative; z-index: 1; }
   margin-bottom: 12px;
 }
 .auth-title {
-  font-family: var(--font-pixel);
+  font-family: 'Cinzel', serif;
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 6px;
@@ -2034,7 +1986,7 @@ section { position: relative; z-index: 1; }
   text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000;
   z-index: 2;
   line-height: 1;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
   pointer-events: none;
 }
 
@@ -2099,7 +2051,7 @@ section { position: relative; z-index: 1; }
 .mc-tooltip-name {
   font-size: 0.88rem;
   font-weight: 700;
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
   margin-bottom: 4px;
 }
 .mc-tooltip-enchants { display: flex; flex-direction: column; gap: 2px; }
@@ -2153,7 +2105,7 @@ section { position: relative; z-index: 1; }
   font-size: 1.8rem;
   color: #ff6b6b;
 }
-.console-gate h3 { font-family: var(--font-pixel); font-size: 1.3rem; font-weight: 700; }
+.console-gate h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; }
 .console-gate p { color: var(--text-muted); font-size: 0.88rem; }
 
 /* Console UI */
@@ -2176,7 +2128,7 @@ section { position: relative; z-index: 1; }
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--green);
-  font-family: var(--font-pixel);
+  font-family: 'Rajdhani', sans-serif;
 }
 .console-admin-badge {
   background: rgba(231,76,60,0.1);
@@ -2325,7 +2277,7 @@ section { position: relative; z-index: 1; }
 }
 .cpd-skin { height: 80px; object-fit: contain; image-rendering: pixelated; flex-shrink: 0; }
 .cpd-info { flex: 1; }
-.cpd-name { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.cpd-name { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
 .cpd-rank { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; margin-bottom: 6px; }
 .cpd-status { font-size: 0.8rem; color: var(--text-muted); }
 .cpd-actions { display: flex; flex-direction: column; gap: 5px; }
@@ -2363,7 +2315,7 @@ section { position: relative; z-index: 1; }
   padding: 10px 8px;
   text-align: center;
 }
-.cpd-stat span { display: block; font-family: var(--font-pixel); font-size: 1rem; font-weight: 700; color: var(--gold); }
+.cpd-stat span { display: block; font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700; color: var(--gold); }
 .cpd-stat small { display: block; font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
 
 .cpd-inv-label {
@@ -2464,7 +2416,7 @@ section { position: relative; z-index: 1; }
   gap: 4px;
 }
 .si-card i { color: var(--gold); font-size: 1rem; }
-.si-card span { font-family: var(--font-pixel); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.si-card span { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); }
 .si-card small { font-size: 0.7rem; color: var(--text-muted); }
 .si-version {
   text-align: center;
