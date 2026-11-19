@@ -23,15 +23,16 @@ if (burger) {
 
 // ── Copy IP ────────────────────────────────────────
 function copyIP() {
-  navigator.clipboard.writeText('legendmine.ru').catch(() => {
+  const ip = typeof SERVER_CONFIG !== 'undefined' ? SERVER_CONFIG.ip : 'legendmine.ru';
+  navigator.clipboard.writeText(ip).catch(() => {
     const el = document.createElement('textarea');
-    el.value = 'legendmine.ru';
+    el.value = ip;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
   });
-  showToast('IP скопирован!');
+  showToast(`IP скопирован: ${ip}`);
 }
 
 // ── Toast ──────────────────────────────────────────
@@ -249,16 +250,61 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
   });
 });
 
-// ── Dynamic online counter ──────────────────────────
-function updateOnline() {
+// ── Server / VDS Configuration ──────────────────────
+// Сюда можно подставить IP или домен твоей VDS, как только пришлешь
+const SERVER_CONFIG = {
+  ip: 'legendmine.ru',
+  port: 25565,
+  checkIntervalMs: 15000,
+};
+
+// ── VDS Live Server Query ───────────────────────────
+async function fetchServerStatus() {
   const onlineEl = document.getElementById('online-count');
-  if (!onlineEl) return;
-  let current = parseInt(onlineEl.textContent) || 247;
-  const delta = Math.floor(Math.random() * 7) - 3;
-  current = Math.max(180, Math.min(350, current + delta));
-  onlineEl.textContent = current;
+  const statOnline = document.getElementById('stat-online');
+  const serverIpEl = document.getElementById('server-ip');
+  
+  if (serverIpEl && SERVER_CONFIG.ip) {
+    serverIpEl.textContent = SERVER_CONFIG.ip;
+  }
+
+  try {
+    const res = await fetch(`https://api.mcstatus.io/v2/status/java/${SERVER_CONFIG.ip}:${SERVER_CONFIG.port}`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Query failed');
+    const data = await res.json();
+
+    if (data && data.online) {
+      const playersOnline = data.players?.online ?? 0;
+      const maxPlayers = data.players?.max ?? 500;
+
+      if (onlineEl) onlineEl.textContent = playersOnline;
+      if (statOnline) {
+        statOnline.textContent = playersOnline;
+        statOnline.dataset.target = playersOnline;
+      }
+
+      document.querySelectorAll('.online-dot, .status-dot').forEach(dot => {
+        dot.style.background = '#2ecc71';
+      });
+
+      const survivalPlayers = document.querySelector('.status-players');
+      if (survivalPlayers) survivalPlayers.textContent = `${playersOnline}/${maxPlayers}`;
+    } else {
+      if (onlineEl) onlineEl.textContent = '0';
+      if (statOnline) statOnline.textContent = '0';
+      document.querySelectorAll('.online-dot, .status-dot').forEach(dot => {
+        dot.style.background = '#e74c3c';
+      });
+    }
+  } catch (err) {
+    console.warn('VDS ping error:', err);
+  }
 }
-setInterval(updateOnline, 8000);
+
+fetchServerStatus();
+setInterval(fetchServerStatus, SERVER_CONFIG.checkIntervalMs);
 
 // ── Sale countdown timer ────────────────────────────
 const saleTimer = document.getElementById('sale-timer');
