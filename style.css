@@ -3,7 +3,12 @@
    Dark Gold Theme | Minecraft Server
    ===================================================== */
 
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap');
+
 :root {
+  --font-pixel: 'Minecraft', 'Pixelify Sans', 'Press Start 2P', monospace;
+  --font-text: 'Pixelify Sans', 'Inter', sans-serif;
   --gold: #f0a500;
   --gold-light: #ffd700;
   --gold-dark: #c47f00;
@@ -30,11 +35,44 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-text);
   background: var(--bg-dark);
   color: var(--text);
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+h1, h2, h3, h4,
+.logo-text,
+.hero-title,
+.hero-sub,
+.server-card h3,
+.server-card-badge,
+.server-version,
+.ip-value,
+.copy-btn,
+.btn-primary,
+.btn-secondary,
+.btn-login,
+.online-badge,
+.section-tag,
+.section-title h2,
+.tab-btn,
+.rank,
+.leader-val,
+.leader-badge,
+.news-tag,
+.news-card h3,
+.d-amount,
+.d-rank,
+.hs-num,
+.hs-label,
+.join-text h2,
+.join-ip span,
+.footer-logo span,
+.footer-col h4 {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.5px;
 }
 
 /* =====================================================
